@@ -25,21 +25,21 @@ public class Customer {
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        String result = "Rental Record for " + getName() + "/n";
+        String result = "Rental Record for " + getName() + "\n";
         for (Rental each : rentals) {
             double thisAmount = 0;
 
             //determine amounts for each line
             switch (each.getCar().getPriceCode()) {
                 case Car.STANDARD:
-                    thisAmount += each.getDaysRented() *200;
-                    if (each.getDaysRented() > 3) {
-                        thisAmount += (each.getDaysRented()-3)*150;
+                    thisAmount += 200;
+                    if (each.getDaysRented() > 2) {
+                        thisAmount += (each.getDaysRented()-2)*150;
                     }
                     break;
 
                 case Car.LUXURY:
-                    thisAmount += 500;
+                    thisAmount += each.getDaysRented() * 500;
                     break;
 
                 case Car.COMPACT:
