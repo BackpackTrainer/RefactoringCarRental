@@ -14,6 +14,38 @@ public class Car {
         this.priceCode = priceCode;
     }
 
+    int getFrequentRenterPoints(int numberOfDaysRented) {
+        if ((getPriceCode() == LUXURY) && numberOfDaysRented > 1) {
+            return 2;
+        }else{
+            return 1;
+        }
+    }
+
+    double getCharge(int numberOfDaysRented) {
+        double result = 0;
+        switch (getPriceCode()) {
+            case Car.STANDARD:
+                result += 200;
+                if (numberOfDaysRented > 2) {
+                    result += (numberOfDaysRented -2)*150;
+                }
+                break;
+
+            case Car.LUXURY:
+                result += numberOfDaysRented * 500;
+                break;
+
+            case Car.COMPACT:
+                result += 150;
+                if (numberOfDaysRented > 3) {
+                    result += (numberOfDaysRented -3)*150;
+                }
+                break;
+        }
+        return result;
+    }
+
     public String getMakeModel() {
         return makeModel;
     }
