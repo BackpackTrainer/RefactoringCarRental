@@ -17,8 +17,6 @@ public class Rental {
         return getCar().getCharge(getDaysRented());
     }
 
-
-
     public Car getCar() {
         return car;
     }
