@@ -7,6 +7,7 @@ public class Customer {
 
     private String name;
     private List<Rental> rentals;
+    int frequentRentalPoints = 0;
 
     public Customer(String name) {
         this.name = name;
@@ -59,9 +60,12 @@ public class Customer {
             totalAmount += thisAmount;
 
         }
-    result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-    result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
-    return result;
+        frequentRentalPoints += frequentRenterPoints;
+        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
+        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+        return result;
 
     }
 }
+
+
