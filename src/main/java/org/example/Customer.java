@@ -7,6 +7,7 @@ public class Customer {
 
     private String name;
     private List<Rental> rentals;
+    int frequentRentalPoints = 0;
 
     public Customer(String name) {
         this.name = name;
@@ -26,11 +27,10 @@ public class Customer {
         for (Rental each : rentals) {
             result += "\t" + each.getCar().getMakeModel() + "\t" + each.getCharge() + "\n";
         }
-
+        frequentRentalPoints += getTotalFrequentRenterPoints();
         result += "Amount owed is " + getTotalCharge() + "\n";
-    result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
-    return result;
-
+        result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
+        return result;
     }
 
     private double getTotalCharge() {
@@ -49,5 +49,4 @@ public class Customer {
         }
         return TotalFrequentRenterPoints;
     }
-
 }
